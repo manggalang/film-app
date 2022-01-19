@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtLink to="/">Default layout</NuxtLink>
+    <NuxtLink to="/">Home page</NuxtLink>
     <slot></slot>
   </div>
 </template>
