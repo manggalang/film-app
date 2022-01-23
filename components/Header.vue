@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { ref } from "vue";
+const keyword = ref("");
+
+async function gotoKeywordData() {
+  if (keyword.value !== "") {
+  }
+}
+</script>
+
 <template>
   <header class="header">
     <div class="container-large header__container">
@@ -15,13 +25,14 @@
           type="text"
           placeholder="search here..."
           class="header__menu-search"
+          v-model="keyword"
         />
       </nav>
     </div>
   </header>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   background-color: #fff;
   box-shadow: 1px 2px 15px rgb(0 0 0 / 10%);

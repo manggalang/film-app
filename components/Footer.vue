@@ -12,7 +12,7 @@
   </footer>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .footer {
   background-color: #004269;
   padding: 30px 0;
