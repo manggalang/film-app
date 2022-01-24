@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import AnimeService from "@/services/anime.service";
-
 const animeService = new AnimeService();
 const { data: animesData } = await useAsyncData("anime", animeService.getAnime);
 </script>
@@ -16,6 +15,7 @@ const { data: animesData } = await useAsyncData("anime", animeService.getAnime);
             :title="anime.title"
             :episodes="anime.episodes"
             :image="anime.images.webp.large_image_url"
+            :mal_id="anime.mal_id"
           />
         </div>
       </div>

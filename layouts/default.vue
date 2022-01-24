@@ -16,11 +16,17 @@
 
 .main-content {
   margin-top: 84px;
-  padding: 60px 0;
+  padding: 30px 0;
 }
 
 .container-large {
   max-width: 1260px;
+  margin: auto;
+  position: relative;
+}
+
+.container-medium {
+  max-width: 970px;
   margin: auto;
   position: relative;
 }
