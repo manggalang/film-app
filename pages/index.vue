@@ -1,22 +1,7 @@
 <script setup lang="ts">
-interface IAnimesData {
-  title: string;
-  episodes: number;
-  id: any;
-  key: any;
-}
-const AnimesData = ref<IAnimesData[]>([]);
-
-async function displayAnimesList() {
-  const response = await useFetch("https://api.jikan.moe/v4/anime", {
-    method: "GET",
-  });
-  AnimesData.value = response.data;
-}
-
-displayAnimesList();
-console.log(AnimesData);
-// console.log(response.data);
+import AnimeService from "@/services/anime.service";
+const animeService = new AnimeService();
+const { data: animesData } = await useAsyncData("anime", animeService.getAnime);
 </script>
 
 <template>
@@ -24,9 +9,13 @@ console.log(AnimesData);
     <div class="hm-banner">
       <div class="container-large">
         <h2 class="hm-banner__title">Anime list</h2>
-        <!-- <p>{{ data }}</p> -->
         <div class="hm-banner__card-wrapper">
-          <CardAnime v-for="data in AnimesData" />
+          <CardAnime
+            v-for="anime in animesData.data"
+            :title="anime.title"
+            :episodes="anime.episodes"
+            :image="anime.images.webp.large_image_url"
+          />
         </div>
       </div>
     </div>

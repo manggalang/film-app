@@ -19,7 +19,7 @@ async function gotoKeywordData() {
         <NuxtLink to="/" class="header__menu-item header__menu-item--active"
           >Home</NuxtLink
         >
-        <NuxtLink to="/about" class="header__menu-item">About</NuxtLink>
+        <NuxtLink to="/detail" class="header__menu-item">Detail</NuxtLink>
         <NuxtLink to="/schedule" class="header__menu-item">Schedule</NuxtLink>
         <input
           type="text"
