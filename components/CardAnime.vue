@@ -1,16 +1,19 @@
 <script setup lang="ts">
-// defineProps({
-//   episodes: { type: Number, default: "" },
-//   title: { type: String, default: "" },
-// });
+defineProps({
+  episodes: { type: Number, default: "" },
+  title: { type: String, default: "" },
+  image: { type: String, default: "" },
+});
 </script>
 
 <template>
   <NuxtLink to="/" class="list-anime__item-list">
     <div class="list-anime__image-container">
-      <img src="../public/jotaro.jpg" class="list-anime__item-image" />
+      <img :src="image" class="list-anime__item-image" />
     </div>
-    <p class="list-anime__item-title">P<span>Episode</span></p>
+    <p class="list-anime__item-title">
+      {{ title }}
+    </p>
   </NuxtLink>
 </template>
 
