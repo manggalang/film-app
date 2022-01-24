@@ -1,15 +1,14 @@
 <script setup lang="ts">
 defineProps({
-  mal_id: { type: Number, default: "" },
-  url: { type: String, default: "" },
-  episodes: { type: Number, default: "" },
+  mal_id: { type: Number, default: 0 },
+  episodes: { type: Number, default: 0 },
   title: { type: String, default: "" },
   image: { type: String, default: "" },
 });
 </script>
 
 <template>
-  <NuxtLink to="url" class="list-anime__item-list">
+  <NuxtLink :to="`/detail/${mal_id}`" class="list-anime__item-list">
     <div class="list-anime__image-container">
       <img :src="image" :alt="title" class="list-anime__item-image" />
     </div>

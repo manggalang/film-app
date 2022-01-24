@@ -1,20 +1,22 @@
 <script setup lang="ts">
-defineProps({
-  episodes: { type: Number, default: "" },
-  url: { type: String, default: "" },
-  title: { type: String, default: "" },
-  score: { type: Number, default: "" },
-  synopsis: { type: String, default: "" },
-  trailer: { type: String, default: "" },
-  image: { type: String, default: "" },
-});
+import AnimeService from "@/services/anime.service";
+const animeService = new AnimeService();
+const route = useRoute();
+
+const { data: animeData } = await useAsyncData("anime", () =>
+  animeService.getDetailAnime(Number(route.params.id))
+);
 </script>
 
 <template>
-  <h2 class="detail-anime__title">title</h2>
+  <h2 class="detail-anime__title">{{ animeData.title }}</h2>
   <div class="detail-anime__wrapper">
     <div class="detail-anime__left-side">
-      <img src="/jotaro.jpg" :alt="title" class="detail-anime__banner-image" />
+      <img
+        :src="animeData.images.webp.large_image_url"
+        alt="title"
+        class="detail-anime__banner-image"
+      />
     </div>
     <div class="detail-anime__right-side">
       <p class="detail-anime__item-title"><span>Japanese</span> : blabla</p>
