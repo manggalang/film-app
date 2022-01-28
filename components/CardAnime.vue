@@ -1,15 +1,14 @@
 <script setup lang="ts">
 defineProps({
-  mal_id: { type: Number, default: "" },
-  url: { type: String, default: "" },
-  episodes: { type: Number, default: "" },
+  mal_id: { type: Number, default: 0 },
+  episodes: { type: Number, default: 0 },
   title: { type: String, default: "" },
   image: { type: String, default: "" },
 });
 </script>
 
 <template>
-  <NuxtLink to="url" class="list-anime__item-list">
+  <NuxtLink :to="`/detail/${mal_id}`" class="list-anime__item-list">
     <div class="list-anime__image-container">
       <img :src="image" :alt="title" class="list-anime__item-image" />
     </div>
@@ -29,6 +28,18 @@ defineProps({
     overflow: hidden;
     position: relative;
     width: 18.5%;
+
+    @media screen and (max-width: 1180px) {
+      width: 22.5%;
+    }
+
+    @media screen and (max-width: 760px) {
+      width: 45.5%;
+    }
+
+    @media screen and (max-width: 375px) {
+      width: 88.5%;
+    }
   }
   &__image-container {
     height: 0;

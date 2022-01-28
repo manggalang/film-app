@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
-const keyword = ref("");
+import { useRouter } from "nuxt3/dist/pages/runtime/composables";
 
-async function gotoKeywordData() {
+const keyword = ref("");
+const router = useRouter();
+
+function handleSubmit() {
   if (keyword.value !== "") {
+    router.push(`/anime-search?q=${keyword.value}`);
   }
 }
 </script>
@@ -15,19 +19,22 @@ async function gotoKeywordData() {
         <h1>ウィアブー</h1>
         <span>Tv</span>
       </NuxtLink>
-      <nav class="header__menu-wrapper">
-        <NuxtLink to="/" class="header__menu-item header__menu-item--active"
-          >Home</NuxtLink
-        >
-        <NuxtLink to="/detail" class="header__menu-item">Detail</NuxtLink>
-        <NuxtLink to="/schedule" class="header__menu-item">Schedule</NuxtLink>
-        <input
-          type="text"
-          placeholder="search here..."
-          class="header__menu-search"
-          v-model="keyword"
-        />
-      </nav>
+      <div class="header__menu-container">
+        <nav class="header__menu-wrapper">
+          <NuxtLink to="/" class="header__menu-item header__menu-item--active"
+            >Home</NuxtLink
+          >
+          <NuxtLink to="/about" class="header__menu-item">About</NuxtLink>
+        </nav>
+        <form @submit.prevent="handleSubmit">
+          <input
+            type="text"
+            placeholder="search here..."
+            class="header__menu-search"
+            v-model="keyword"
+          />
+        </form>
+      </div>
     </div>
   </header>
 </template>
@@ -46,6 +53,10 @@ async function gotoKeywordData() {
     align-items: center;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__logo {
@@ -54,6 +65,11 @@ async function gotoKeywordData() {
     font-weight: bold;
     text-decoration: none;
 
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+      width: 100%;
+    }
+
     h1 {
       color: #004269;
     }
@@ -61,6 +77,17 @@ async function gotoKeywordData() {
     span {
       color: #004269;
       font-size: 18px;
+    }
+  }
+
+  &__menu-container {
+    align-items: center;
+    display: flex;
+
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
     }
   }
 
@@ -74,6 +101,10 @@ async function gotoKeywordData() {
     transition: 0.3s ease-in-out;
     text-decoration: none;
     margin-right: 36px;
+
+    @media screen and (max-width: 480px) {
+      margin-right: 10px;
+    }
 
     &--active {
       color: #004269;
@@ -91,6 +122,10 @@ async function gotoKeywordData() {
     padding: 8px 5px;
     transition: 0.5s ease-in-out;
     width: 250px;
+
+    @media screen and (max-width: 480px) {
+      width: 160px;
+    }
 
     &:focus {
       border: 1px solid #004269;

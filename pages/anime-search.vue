@@ -8,7 +8,7 @@ const { data: animesData } = await useAsyncData("anime", animeService.getAnime);
   <main class="main-content hm">
     <div class="hm-banner">
       <div class="container-large">
-        <h2 class="hm-banner__title">Anime list</h2>
+        <h2 class="hm-banner__title">Search by keyword</h2>
         <div class="hm-banner__card-wrapper">
           <CardAnime
             v-for="anime in animesData.data"

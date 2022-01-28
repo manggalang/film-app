@@ -1,5 +1,7 @@
 export interface IAnimesData {
   title: string;
+  title_japanese: string;
+  rating: string;
   url: string;
   episodes: number;
   mal_id: any;
@@ -14,6 +16,21 @@ export interface IAnimesData {
       large_image_url: string;
     };
   };
+  producers: [
+    {
+      name: string;
+    }
+  ];
+  licensors: [
+    {
+      name: string;
+    }
+  ];
+  studios: [
+    {
+      name: string;
+    }
+  ];
 }
 
 export interface AnimeDataFromAPI {
